@@ -21,6 +21,35 @@ function updateDataObject() {
   localStorage.setItem("todo-list", JSON.stringify(data));
 }
 
+const handleAddTodo = () => {
+  if (todo.value) {
+    addItem(todo.value);
+  }
+};
+
+function addItem(value) {
+  if (currentEditIndex !== null) {
+    data.todos[currentEditIndex] = value;
+    currentEditIndex = null;
+  } else {
+    data.todos.push(value);
+    addItemTodo(value);
+  }
+
+  todo.value = "";
+  updateDataObject();
+  renderToList();
+  saveTodoBtn.style.display = "none";
+  addTodoBtn.style.display = "block";
+}
+
+todo.addEventListener("keydown", function (event) {
+  let value = this.value;
+  if (event.key === "Enter" && value) {
+    addItem(value);
+  }
+});
+
 function removeItem() {
   let list_item = this.parentNode.parentNode;
   let list_container = list_item.parentNode;
@@ -67,24 +96,6 @@ function uncheckTodo() {
   list_item.remove();
   addItemTodo(list_item_text, false);
 }
-
-const handleAddTodo = () => {
-  if (todo.value) {
-    if (currentEditIndex !== null) {
-      data.todos[currentEditIndex] = todo.value;
-      currentEditIndex = null;
-    } else {
-      data.todos.push(todo.value);
-      addItemTodo(todo.value);
-    }
-
-    todo.value = "";
-    updateDataObject();
-    renderToList();
-    saveTodoBtn.style.display = "none";
-    addTodoBtn.style.display = "block";
-  }
-};
 
 function renderToList() {
   document.getElementById("display-list").innerHTML = "";
