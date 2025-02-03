@@ -128,6 +128,7 @@ button.save-btn svg {
   background: #d8e5e0;
   top: 30px;
   left: 50%;
+  z-index: -2;
   transform: translateX(-50%);
 }
 
