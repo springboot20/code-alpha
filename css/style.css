@@ -169,6 +169,10 @@ button.save-btn svg {
   color: #444;
 }
 
+#completed-list li .buttons button.edit{
+  display: none;
+}
+
 #display-list li:not(:nth-child(1)),
 #completed-list li:not(:nth-child(1)) {
   margin-top: 0.55rem;
