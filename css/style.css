@@ -1,0 +1,284 @@
+@font-face {
+  font-family: "Nunito Sans", sans-serif;
+  src: url("/fonts/NunitoSans_10pt-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Nunito Sans", sans-serif;
+  src: url("/fonts/NunitoSans_10pt-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Nunito Sans", sans-serif;
+  src: url("/fonts/NunitoSans_10pt-SemiBold.ttf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+:root {
+  --container-width: 45rem;
+  --full-width: 100%;
+  --mx-auto: 0 auto;
+}
+
+body {
+  background: #edf0f1;
+}
+
+.container {
+  margin: var(--mx-auto);
+  max-width: var(--container-width);
+  width: var(--full-width);
+}
+
+.content {
+  margin: 1rem;
+}
+
+.to-do-title {
+  color: rgb(224, 224, 224);
+  font-size: 2.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.todo-form {
+  height: 10rem;
+  background: #25b99a;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+}
+
+.form-container {
+  height: 100%;
+  display: flex;
+  width: var(--full-width);
+  flex: 1 1 0%;
+  align-items: center;
+  position: relative;
+}
+
+.form-group {
+  flex: 1 1 0%;
+}
+
+.form-group input {
+  padding: 1.05rem 1.65rem;
+  width: var(--full-width);
+  border-radius: 0.35rem;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px;
+  outline: none;
+  border: 0px;
+  font-size: 18px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button.add-btn,
+button.save-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -1rem;
+  height: 2.25rem;
+  background: #ffffff;
+  width: 2.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 0px;
+  outline: none;
+  z-index: 2;
+}
+
+button.add-btn svg,
+button.save-btn svg {
+  fill: #25b99a;
+  height: 15px;
+}
+
+::placeholder {
+  color: #ffffff;
+}
+
+#display-list,
+#completed-list {
+  margin-top: 2rem;
+}
+
+#display-list {
+  position: relative;
+}
+
+#display-list::before {
+  content: "";
+  position: absolute;
+  height: 1.25px;
+  width: 150px;
+  background: #d8e5e0;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#display-list:empty:after {
+  content: "You have nothing to do";
+}
+
+#completed-list:empty:after {
+  content: "You have yet to complete any task";
+}
+
+#display-list::after,
+#completed-list::after {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  width: var(--full-width);
+}
+
+#display-list li,
+#completed-list li {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border-radius: 4px;
+  background: white;
+  width: var(--full-width);
+  padding: 0.85rem 1rem;
+  justify-content: space-between;
+  box-shadow: 0px 2px 2px rgba(44, 62, 88, 0.1);
+}
+
+#display-list li .todo-text,
+#completed-list li .todo-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #444;
+}
+
+#display-list li:not(:nth-child(1)),
+#completed-list li:not(:nth-child(1)) {
+  margin-top: 0.55rem;
+}
+
+.text_and_completed {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.text_and_completed button.check {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+}
+
+#display-list .text_and_completed button.check {
+  background: #ffffff;
+  border: 2px solid #25b99a;
+  transition: 0.2s ease-in-out;
+}
+
+#display-list .text_and_completed button.check:hover {
+  background: #25b99a;
+  border: 2px solid transparent;
+}
+
+#display-list .text_and_completed button.check:hover svg {
+  fill: #ffffff;
+}
+
+.text_and_completed svg {
+  height: 15px;
+  stroke-width: 10 !important;
+  stroke-width: 5 !important;
+}
+
+#display-list .text_and_completed button.check svg {
+  fill: #25b99a;
+}
+
+#completed-list .text_and_completed button.check {
+  background: #25b99a;
+  border: 0px;
+}
+
+#completed-list .text_and_completed button.check svg {
+  fill: #ffffff;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.buttons button {
+  background: transparent;
+  border: 0px;
+  outline: none;
+}
+
+.buttons button > svg {
+  height: 15px;
+  cursor: pointer;
+}
+
+.buttons button.remove svg {
+  fill: #c0cecb;
+}
+
+.buttons button.remove:hover svg {
+  fill: #e85656;
+}
+
+.buttons button.edit svg {
+  fill: #ffc107;
+}
+
+/* Completed Todo Styling */
+#completed-list li {
+  text-decoration: line-through;
+  background: #d4edda;
+  color: #155724;
+  opacity: 0.7;
+  transition: all 0.3s ease-in-out;
+}
+
+#completed-list li .todo-text {
+  color: #155724;
+}
+
+/* Animation for new todos */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#display-list li,
+#completed-list li {
+  animation: fadeIn 0.3s ease-in-out;
+}
